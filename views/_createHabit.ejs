@@ -1,0 +1,44 @@
+<!-- Bootstap Modal is used to implement a modal  
+    - close button and submit button has modal controls -->
+<div class="modal fade" id="create-habit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new Habit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Create-habit Form -->
+                <form id="create-habit-form" action="/habit/create" method="post"></form>
+                <div id="create-habit-container" class="col-12  mx-auto mt-3  rounded">
+
+                    <div class="user-input">
+                        <!-- Title -->
+                        <label>Title</label>
+                        <div class="container border-bottom p-3">
+                            <span> <i class="fa-solid fa-circle-info"></i></span>
+                            <input style="border: none;" class="col-10 p-1" type="text" name="title" id="habit-title"
+                                placeholder="What do you want to do?" form="create-habit-form" required>
+                            <span id='title-empty-error' class="d-none badge bg-danger ">Title cannot be empty</span>
+                        </div>
+                        <!-- Time Created -->
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <!-- Button Panel -->
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" id="create-habit-form-submit" value="+ Add habit"
+                    data-bs-dismiss="modal" form="create-habit-form">
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/createHabit.js"></script>
+
+</div>

@@ -9,6 +9,9 @@ const expressLayouts = require("express-ejs-layouts");
 // Database Connection
 const db_connection = require("./config/mongoose");
 
+//Seting directory for  static files
+app.use(express.static("./static"));
+
 // Using Layouts
 app.use(expressLayouts);
 
@@ -19,6 +22,10 @@ app.set("layout extractScripts", true);
 // Setting views
 app.set("view engine", "ejs");
 app.set("views", "./views");
+
+// Parsers
+app.use(express.urlencoded());
+app.use(express.json());
 
 // Routes
 app.use("/", require("./routes"));
