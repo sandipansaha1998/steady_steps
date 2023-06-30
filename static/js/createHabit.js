@@ -6,7 +6,7 @@ function newHabitDom(habit, daysCount) {
   newRow.append(titleData);
   // Link to yearly performance
   titleData[0].addEventListener("click", () => {
-    window.location.href = `https://steady-steps.socialise-india.in/habit/${habit._id}/${currentYear}`;
+    window.location.href = `https://steady-steps.socialise-india.in/year-wise/${habit._id}/${currentYear}`;
   });
   titleData.addClass("p-2 habit-title cursor-pointer");
 
