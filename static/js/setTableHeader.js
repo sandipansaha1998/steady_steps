@@ -1,5 +1,3 @@
-// Get current date
-let currentDate = new Date();
 // Function to render the calendar for a given month
 function renderCalendar(month, year) {
   //
@@ -10,7 +8,7 @@ function renderCalendar(month, year) {
   headerTitle.classList.add("container", "text-center", "text-primary");
 
   // fetches name of the month from monthNames[]
-  headerTitle.innerHTML = "<h4>" + monthNames[month] + "," + year + "</h4>";
+  headerTitle.innerHTML = "<h4>" + monthNames[month] + " , " + year + "</h4>";
 
   // Setting WEEK DAYS HEADER ROW
   // Calender header
@@ -27,12 +25,14 @@ function renderCalendar(month, year) {
   // Habits header title
   let HABITS_HEADER = document.createElement("th");
   HABITS_HEADER.innerText = "Habits";
+  HABITS_HEADER.classList.add("p-3");
   headerRowWeekDay.append(HABITS_HEADER);
   // Appending the header row to the calendar header
   calendarTableHeader.append(headerRowWeekDay);
 
   for (let i = 0; i < daysInMonth[month]; i++) {
     let headerCell = document.createElement("th");
+    headerCell.classList.add("p-1");
     // Adding week day name to the table header
     headerCell.textContent = dayNames[startingDateDayCount++ % 7];
     headerRowWeekDay.appendChild(headerCell);
@@ -47,6 +47,7 @@ function renderCalendar(month, year) {
 
   for (let col = 1; col <= daysInMonth[month]; col++) {
     let headerCell = document.createElement("th");
+    headerCell.classList.add("py-4", "fs-5");
     // Adding month day number to the table header
     headerCell.textContent = col;
     // Marking Current date
@@ -106,6 +107,8 @@ let dayNames = ["S", "M", "T", "W", "T", "F", "S"];
 // Days in each month
 let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+// Get current date
+let currentDate = new Date();
 //  Render current month calendar on page load
 renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
 

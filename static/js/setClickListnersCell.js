@@ -23,7 +23,7 @@ function setListners() {
       let headerTitle = document.querySelector("#header-title");
       monthName = headerTitle.innerText.split(",")[0];
       year = headerTitle.innerText.split(",")[1];
-      month = monthNames.indexOf(monthName);
+      month = currentMonth;
       habit = event.currentTarget.classList[0].split("-")[1];
       day = event.currentTarget.classList[1].split("-")[1];
       $.ajax({

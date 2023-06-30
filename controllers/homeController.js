@@ -13,7 +13,7 @@ module.exports.home = async function (req, res) {
           // $gte: new Date(currentYear, currentMonth, 1),
         },
       });
-      console.log(habitsCurrentMonth.length);
+      // console.log(habitsCurrentMonth.length);
       let getMonthDayCount = function (y, m) {
         return new Date(y, m + 1, 0).getDate();
       };
@@ -38,7 +38,7 @@ module.exports.home = async function (req, res) {
     let getMonthDayCount = function (y, m) {
       return new Date(y, m + 1, 0).getDate();
     };
-    console.log(habitsCurrentMonth);
+    // console.log(habitsCurrentMonth);
     let monthDayCount = getMonthDayCount(currentYear, currentMonth);
 
     return res.render("home", {

@@ -4,20 +4,38 @@
 
 
 <main class="year-wise  ">
-    <h3 class="text-center">Yearly performance</h3>
+    <h4 class="container py-3"><a class="text-decoration-none text-dark" href="/">SteadySteps</a>
+    </h4>
+    <h5 class="text-center text-decoration-underline">Yearly performance for "<%= habit_title%>"
+    </h5>
+    <h5 class="text-center">Longest Streak</h5>
+
+    <h1 class="text-center">
+        <%=maxStreak%>
+    </h1>
+    <div class="container text-end ">
+
+        <button type="button" class="btn btn-light border border-2" data-bs-toggle="modal"
+            data-bs-target="#confirmDeleteModal">
+            <i class="fa-solid fa-trash text-danger"></i>
+
+        </button>
+
+    </div>
     <canvas id="year-wise-canvas" style="position: relative; height:40vh; width:80vw"></canvas>
 </main>
 <script>
     const ctx = document.getElementById('year-wise-canvas');
-
+    const data = [<%=graph_data %>]
+    console.log(data)
     new Chart(ctx, {
         type: 'bar',
 
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 29, 3, 5, 2, 3],
+                label: '# of Days Marked as done',
+                data: data,
                 borderWidth: 2
             }]
         },
@@ -34,4 +52,28 @@
             }
         }
     });
+</script>
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                Confirm Deletion
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('.delete').addEventListener('click', () => {
+        window.location.href = 'http://localhost:8000/habit/<%=habit_id%>'
+    })
+
 </script>

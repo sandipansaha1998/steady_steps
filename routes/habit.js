@@ -8,4 +8,5 @@ router.post("/create", habitController.create);
 router.post("/toggleStatus", habitController.toggleStatus);
 router.get("/:year/:month", homeController.home);
 router.get("/year-wise/:habitID/:year", habitController.getYearlyPerformance);
+router.get("/:habit", habitController.delete);
 module.exports = router;

@@ -1,5 +1,5 @@
 let addToggleStatus = (event) => {
-  if (event.currentTarget.classList.value.includes("habit-done")) {
+  if (event.currentTarget.classList.value.includes("")) {
     event.currentTarget.classList.add("habit-not-done");
     event.currentTarget.classList.remove("habit-done");
   } else if (event.currentTarget.classList.value.includes("habit-not-done")) {
@@ -16,7 +16,7 @@ let addToggleStatus = (event) => {
   let headerTitle = document.querySelector("#header-title");
   monthName = headerTitle.innerText.split(",")[0];
   year = headerTitle.innerText.split(",")[1];
-  month = monthNames.indexOf(monthName);
+  month = currentMonth;
   habit = event.currentTarget.classList[0].split("-")[1];
   day = event.currentTarget.classList[1].split("-")[1];
   console.log(habit + " " + day + " " + month + " " + year);
@@ -41,9 +41,15 @@ let newHabitDom = function (habit, daysCount) {
   let titleData = $("<td>");
   titleData.text(habit.title);
   newRow.append(titleData);
-  console.log(habit.id);
+  titleData[0].addEventListener("click", () => {
+    window.location.href = `http://localhost:8000/habit/year-wise/${habit._id}/${currentYear}`;
+  });
+  titleData.addClass("p-2 habit-title cursor-pointer");
   for (let i = 1; i <= daysCount; i++) {
-    let tableCell = $("<td>").addClass(`habit-${habit._id} day-${i} day-cell`);
+    let tableCell = $("<td>").addClass(
+      `habit-${habit._id} day-${i} day-cell text-light`
+    );
+    tableCell[0].innerText = i;
     newRow.append(tableCell);
   }
   return newRow;
@@ -57,6 +63,7 @@ let createHabit = (e) => {
     // send it via the current year and currenet month
     createdAt: new Date(currentYear, currentMonth, 1).toISOString(),
   };
+
   console.log(new Date().toISOString());
   $.ajax({
     type: "post",

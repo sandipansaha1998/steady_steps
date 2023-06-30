@@ -5,7 +5,7 @@ table {
   /* display: none !important; */
 }
 th {
-  width: 2.2vw !important;
+  /* width: 2.2vw !important; */
   font-weight: 500;
   color: black;
   font-size: 0.9rem;
@@ -16,7 +16,7 @@ th {
 
 td {
   text-align: center;
-  width: 2.2vw !important;
+  /* width: 2.2vw !important; */
   border: 1px solid black;
   border-collapse: collapse;
   padding: 5px;
@@ -24,17 +24,47 @@ td {
 }
 .table-bordered td,
 .table-bordered th {
-  border: 1px solid #dee2e6;
+  border: 1.5px solid #eef0f3;
+  min-width: 50px;
+  word-wrap: break-word;
+}
+.table-bordered th {
+  background-color: #d9e7ff;
 }
 
+.day-cell {
+  color: white;
+}
 .cursor-pointer {
   cursor: pointer;
 }
-
+.habit-title:hover {
+  background-image: url(https://t3.ftcdn.net/jpg/01/08/24/94/360_F_108249487_w8UD8P6YOYuh6Pr9NUw08juskfxpIBk4.jpg);
+  background-size: 80%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: transparent;
+}
 .habit-done {
   background-color: lightgreen;
+  color: lightgreen;
 }
 
 .habit-not-done {
   background-color: lightcoral;
+  color: lightcoral;
+}
+
+.day-cell:hover {
+  color: black;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .table-bordered th {
+    border: 1.5px solid #eef0f3;
+    min-width: 50px;
+
+    word-wrap: break-word;
+  }
 }

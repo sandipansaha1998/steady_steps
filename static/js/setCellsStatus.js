@@ -6,11 +6,16 @@ function createHabitRow(habit, year, month, dayCount) {
   let habitRow = document.createElement("tr");
 
   let HABIT_TITLE = document.createElement("td");
+  HABIT_TITLE.classList.add("p-2", "habit-title", "cursor-pointer");
   HABIT_TITLE.innerText = habit.title;
+  HABIT_TITLE.addEventListener("click", () => {
+    window.location.href = `http://localhost:8000/habit/year-wise/${habit._id}/${year}`;
+  });
   habitRow.append(HABIT_TITLE);
 
   for (let i = 1; i <= dayCount; i++) {
     let dayCell = document.createElement("td");
+    dayCell.innerText = i;
     dayCell.classList.add(`habit-${habit._id}`, `day-${i}`, `day-cell`);
 
     if (habit.done.some((doneDate) => +doneDate === +new Date(2023, 5, i)))
@@ -33,7 +38,7 @@ function createHabitRow(habit, year, month, dayCount) {
 function setCellStatus(habits, year, month, daysCount) {
   console.log("SET CELL STATUS", daysCount);
   habits.forEach((habit) => {
-    console.log(habit.notDone[0]);
+    console.log(habit.done[0]);
     console.log(new Date(year, month, 1).toISOString());
     for (let i = 1; i <= daysCount; i++) {
       if (
