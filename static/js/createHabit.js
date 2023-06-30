@@ -1,5 +1,5 @@
 // Creates new habit row and appends to the table in DOM
-let newHabitDom = function (habit, daysCount) {
+function newHabitDom(habit, daysCount) {
   let newRow = $("<tr>");
   let titleData = $("<td>");
   titleData.text(habit.title);
@@ -19,8 +19,8 @@ let newHabitDom = function (habit, daysCount) {
     newRow.append(tableCell);
   }
   return newRow;
-};
-let addToggleStatus = (event) => {
+}
+function addToggleStatus(event) {
   // Check if class list of cell contains done or undone
   // if neither done nor not done (unmarked) found : change it to done
   // if marked done : change it to not-done
@@ -61,8 +61,8 @@ let addToggleStatus = (event) => {
       }).show();
     },
   });
-};
-let createHabit = (e) => {
+}
+function createHabit(e) {
   e.preventDefault();
   let newHabitTitle = $("#habit-title");
   let newHabitForm = {
@@ -102,7 +102,7 @@ let createHabit = (e) => {
       },
     },
   });
-};
+}
 
 // Event Listner for Form Submition
 let form = document.querySelector("#create-habit-form");

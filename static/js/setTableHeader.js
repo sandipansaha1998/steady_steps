@@ -92,7 +92,7 @@ function createHabitRow(habit, year, month, dayCount) {
   HABIT_TITLE.classList.add("p-2", "habit-title", "cursor-pointer");
   HABIT_TITLE.innerText = habit.title;
   HABIT_TITLE.addEventListener("click", () => {
-    window.location.href = `http://localhost:8000/habit/year-wise/${habit._id}/${year}`;
+    window.location.href = `https://steady-steps.socialise-india.in/habit/year-wise/${habit._id}/${year}`;
   });
   habitRow.append(HABIT_TITLE);
 

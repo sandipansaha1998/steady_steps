@@ -48,15 +48,3 @@
         <script type="application/javascript" src="/js/setTableHeader.js"></script>
         <script type="application/javascript" src="/js/createHabit.js"></script>
         <script type="application/javascript" src="/js/addCellListners.js"></script>
-
-        server {
-        listen 443 ssl;
-        server_name steady-steps.socialise-india.in;
-
-
-        ssl_certificate /etc/letsencrypt/live/steady-steps.socialise-india.in/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/steady-steps.socialise-india.in/privkey.pem;
-        location / {
-        proxy_pass http://localhost:8000;
-        }
-        }
