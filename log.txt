@@ -1,0 +1,47 @@
+commit f811b5fdd324f46505dcd8ba66e0f1c5615ee467
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 19:03:14 2023 +0530
+
+    Add longest streak feature for a habit
+
+commit 42a7719510349a03bd41edb848163164d710968f
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 18:29:24 2023 +0530
+
+    Temporary fix to Timezone issue
+
+commit 0d75855bc9de5af69abb2cf46e2f74615ed5749a
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 16:45:40 2023 +0530
+
+    Fix naming error
+
+commit b9baff28765a5ad1bd576445e7229157631b6223
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 15:25:01 2023 +0530
+
+    Set the hyperlinks for production
+
+commit 88a8ada71671a3d8bc1c55e3c9c7c79223ff7c5a
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 13:52:50 2023 +0530
+
+    Add Delete a habit feature
+
+commit 788e0acfd59de5ef30382b0ed727c035c6de697f
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 11:50:33 2023 +0530
+
+    Add yearly performance view
+
+commit 7551f8daeb14733c013e7825e2cdfd88ae0d46f5
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Fri Jun 30 01:12:40 2023 +0530
+
+    Add Add habit and Toogle habit status for a day feature
+
+commit 6430c6b8884dda88fc7d5c41ad2233faa61b9dd0
+Author: Sandipan Saha <sandipansaha1998@icloud.com>
+Date:   Sat Jun 10 16:52:23 2023 +0530
+
+    Setup directory
