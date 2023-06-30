@@ -1,15 +1,14 @@
 const Habit = require("../models/habit");
 const moment = require("moment");
+
+// Creates a new Habit
 module.exports.create = async function (req, res) {
   try {
-    // Add the Habit created
     if (req.xhr) {
       let newHabit = JSON.parse(req.body.data);
-      // newHabit.createdAt = moment(newHabit.createdAt).startOf("day").format();
 
       let habit = await Habit.create(newHabit);
-      // ADD the habit to the DOM
-      // Add listners to the table cellss
+
       res.status(200).json({
         habit,
       });
@@ -18,6 +17,7 @@ module.exports.create = async function (req, res) {
     console.log("Error in creating habit", e);
   }
 };
+// Function to check if a date is in an array
 let isDateIncluded = function (datesArray, dateTobeSearched) {
   let isIncluded = false;
   datesArray.forEach((date) => {
@@ -26,20 +26,17 @@ let isDateIncluded = function (datesArray, dateTobeSearched) {
   return isIncluded;
 };
 
+// Function to toggle status
 module.exports.toggleStatus = async function (req, res) {
   try {
     let habit = await Habit.findById(req.body.habit);
     day = req.body.day;
     month = req.body.month;
     year = req.body.year;
-    // Bring in a offset
-    console.log(year);
-    console.log(month);
-    console.log(day);
+
     let date = new Date(year, month, day);
 
     let isMarked = false;
-    // console.log(date);
     if (
       isDateIncluded(habit.done, date) ||
       isDateIncluded(habit.notDone, date)

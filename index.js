@@ -30,6 +30,7 @@ app.use(express.json());
 // Routes
 app.use("/", require("./routes"));
 
+process.env.TZ = "Asia/Calcutta";
 // Server
 app.listen(port, function (err) {
   if (err) {
