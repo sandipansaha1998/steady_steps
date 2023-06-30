@@ -1,6 +1,4 @@
-// Packages
 const express = require("express");
-// Modules
 const homeController = require("../controllers/homeController");
 
 const router = express.Router();

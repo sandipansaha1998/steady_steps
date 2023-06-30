@@ -1,7 +1,6 @@
-// Function to render the calendar for a given month
+// Function to render the calendar for a given month and year
 function renderCalendar(month, year) {
   //
-  console.log("Calender rendered");
 
   // Setting Header MONTH and YEAR
   let headerTitle = document.querySelector("#header-title");
@@ -61,7 +60,8 @@ function renderCalendar(month, year) {
         "border",
         "border-2",
         "border-dark",
-        "text-danger"
+        "text-danger",
+        "fs-3"
       );
     }
     calendarTableHeader.append(headerRowMonthDay);
@@ -69,20 +69,51 @@ function renderCalendar(month, year) {
   }
   let tableBody = document.querySelector("#calender-table tbody");
 
-  // For the first load we will have the ejs variable and habits would not be null
-
+  // Fetches habtis for Month view
   $.get(`/habit/${year}/${month}`, (data) => {
     habits = data.habits;
-
-    console.log("---habits:", habits);
     habits.forEach((habit) => {
       let habitRow = createHabitRow(habit, year, month, daysInMonth[month]);
       tableBody.append(habitRow);
     });
-    setListners();
-    // Set cell status of
+    // Adding ClickListners and setting cells status
+    setClickListners();
     setCellStatus(habits, year, month, daysInMonth[month]);
   });
+}
+function createHabitRow(habit, year, month, dayCount) {
+  // Creates and returns habit row to be appended to  DOM
+
+  // Creates a new DOM node tr
+  let habitRow = document.createElement("tr");
+
+  // Habit Title
+  let HABIT_TITLE = document.createElement("td");
+  HABIT_TITLE.classList.add("p-2", "habit-title", "cursor-pointer");
+  HABIT_TITLE.innerText = habit.title;
+  HABIT_TITLE.addEventListener("click", () => {
+    window.location.href = `http://localhost:8000/habit/year-wise/${habit._id}/${year}`;
+  });
+  habitRow.append(HABIT_TITLE);
+
+  // Creating new cells
+  for (let i = 1; i <= dayCount; i++) {
+    let dayCell = document.createElement("td");
+    dayCell.innerText = i;
+    dayCell.classList.add(`habit-${habit._id}`, `day-${i}`, `day-cell`);
+    // Marking the status
+    if (habit.done.some((doneDate) => +doneDate === +new Date(2023, 5, i)))
+      dayCell.class.add(`habit-done`);
+    else if (
+      habit.notDone.some(
+        (notDoneDate) => +notDoneDate === +new Date(2023, 5, i)
+      )
+    ) {
+      dayCell.class.add(`habit-not-done`);
+    }
+    habitRow.append(dayCell);
+  }
+  return habitRow;
 }
 
 // Month names array
@@ -109,18 +140,23 @@ let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // Get current date
 let currentDate = new Date();
-//  Render current month calendar on page load
-renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
-
-let prevButton = document.querySelector("#prevButton");
-let nextButton = document.querySelector("#nextButton");
 
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
+
+//  Render current month calendar on page load
+renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
+
+// Adding Listners to Toggle month button
+let prevButton = document.querySelector("#prevButton");
+let nextButton = document.querySelector("#nextButton");
+
 prevButton.addEventListener("click", function () {
+  // Cleared the previous table
   document.querySelector("#calender-table thead").innerHTML = "";
   document.querySelector("#calender-table tbody").innerHTML = "";
 
+  // Setting the month
   currentMonth--;
   if (currentMonth === -1) currentYear--;
   let monthTobeRendered = currentMonth % 12;
@@ -131,9 +167,10 @@ prevButton.addEventListener("click", function () {
 });
 
 nextButton.addEventListener("click", function () {
+  // Cleared the previous table
   document.querySelector("#calender-table thead").innerHTML = "";
   document.querySelector("#calender-table tbody").innerHTML = "";
-
+  // Setting the month
   if (currentMonth === 11) currentYear++;
   currentMonth++;
   let monthTobeRendered = currentMonth % 12;
@@ -142,4 +179,3 @@ nextButton.addEventListener("click", function () {
 
   renderCalendar(monthTobeRendered, currentYear);
 });
-console.log("Hello");
